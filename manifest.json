@@ -1,0 +1,33 @@
+{
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "name": "chrome-extension-study",
+  "description": "테스트 코드",
+  "permissions": [
+    "activeTab",
+    "declarativeNetRequest",
+    "declarativeNetRequestFeedback"
+  ],
+  "host_permissions": ["*://lily.sunmoon.ac.kr/*"],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://lily.sunmoon.ac.kr/MainDefault3.aspx*",
+        "https://lily.sunmoon.ac.kr/MainDefault2.aspx*"
+      ],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ruleset1",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  }
+}
