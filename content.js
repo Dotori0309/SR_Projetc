@@ -1,5 +1,5 @@
 (async function () {
-  const storage = chrome.storage.local.get();
+  const storage = await chrome.storage.local.get();
   const isEnabled = storage.declarativeNetRequestEnabled ?? false;
   if (isEnabled === true) {
     removeResource();
