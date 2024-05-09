@@ -2,11 +2,17 @@
   "version": "1.0.0",
   "manifest_version": 3,
   "name": "chrome-extension-study",
+  "icons": {
+    "16": "./icons/off.png"
+  },
   "description": "테스트 코드",
   "permissions": [
     "activeTab",
     "declarativeNetRequest",
-    "declarativeNetRequestFeedback"
+    "declarativeNetRequestFeedback",
+    "declarativeNetRequestWithHostAccess",
+    "storage",
+    "tabs"
   ],
   "host_permissions": ["*://lily.sunmoon.ac.kr/*"],
   "content_scripts": [
@@ -21,13 +27,7 @@
   "action": {
     "default_popup": "popup.html"
   },
-  "declarative_net_request": {
-    "rule_resources": [
-      {
-        "id": "ruleset1",
-        "enabled": true,
-        "path": "rules.json"
-      }
-    ]
+  "background": {
+    "service_worker": "background.js"
   }
 }
