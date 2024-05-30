@@ -51,3 +51,15 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     chrome.action.setIcon({ path: iconPath });
   }
 });
+
+chrome.runtime.onStartup.addListener(() => {
+  chrome.storage.local.get("declarativeNetRequestEnabled", function (data) {
+    const isEnabled = data.declarativeNetRequestEnabled ?? false;
+    updateIcon(isEnabled);
+  });
+});
+
+function updateIcon(isEnabled) {
+  const iconPath = isEnabled ? "./icons/on.png" : "./icons/off.png";
+  chrome.action.setIcon({ path: iconPath });
+}
